@@ -39,7 +39,7 @@ def verify():
     global user
     user = OAuth1Session(CK, CS)
     params = {
-        'oauth_callback': 'http://127.0.0.1:5000/oauth'
+        'oauth_callback': 'https://atsuweet.herokuapp.com/oauth'
     }
     res = user.post('https://api.twitter.com/oauth/request_token', params)
     params = parser(res.text)
