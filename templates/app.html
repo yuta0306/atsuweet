@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>あつい〜と | ダッシュボード</title>
+    <script src="{{ url_for('static', filename='js/generator.js') }}" async></script>
+</head>
+<body ontouchstart="">
+    <div class="main">
+        <h1 class="title">ダッシュボード</h1>
+        <div class="wrapper">
+            <input type="text" name="query" id="query">
+            <input type="button" value="クエリを決定" id="action">
+            <div>
+                <p class="msg"></p>
+            </div>
+            <div class="contents">
+
+            </div>
+            <div style="margin: 30px 0;">
+                <a href="{{ url_for('index') }}" id="delete">アプリの利用を停止する</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
