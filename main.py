@@ -7,6 +7,7 @@ import datetime
 from datetime import datetime as dt
 from typing import List, Dict
 from collections import defaultdict
+import os
 
 from database import fetch_all_users
 
