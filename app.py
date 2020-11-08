@@ -107,7 +107,7 @@ def update():
     return jsonify(obj)
 
 @app.route('/delete', methods=['POST'])
-def delete_user():
+def delete():
     id_ = request.json['id']
 
     delete_user(id_)
