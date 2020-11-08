@@ -110,7 +110,7 @@ def update():
 def delete_user():
     id_ = request.json['id']
 
-    delete(id_)
+    delete_user(id_)
     empty = json.dumps({'msg': 'ユーザーを削除しました。'})
 
     return jsonify(empty)
