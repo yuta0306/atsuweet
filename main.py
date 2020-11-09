@@ -121,22 +121,28 @@ def fetch_top_link(datas: List[Dict]) -> str:
 if __name__ == "__main__":
     users = fetch_all_users()
 
-    for user in users:
-        id_, AK, AS, query = user
-        session = create_session(CK, CS, AK, AS)
-        tweets = []
-        max_id = None
-        for i in range(10):
-            tweets += search(session, query, max_id=max_id)
-            max_id = get_max_id(tweets)
-            time.sleep(2)
-            
-        results = count(tweets)
-        detector = list(results.values())[:6]
-        recent = detector[0]
-        avg = sum(detector[1:]) / len(detector) - 1
-        if recent > 3 * avg:
-            link = fetch_top_link(tweets[:recent])
-            text = '「{}」の話題で盛り上がってみます。\n\nチェックしましょう!!\n\n👇現在のトップツイート👇{}'.format(query, link)
-            tweeted = post_tweet(session=session, text=text)
-            print(json.loads(tweeted.text))
+    try:
+        for user in users:
+            id_, AK, AS, query = user
+            session = create_session(CK, CS, AK, AS)
+            tweets = []
+            max_id = None
+            for i in range(10):
+                try:
+                    tweets += search(session, query, max_id=max_id)
+                    max_id = get_max_id(tweets)
+                    time.sleep(2)
+                except KeyError:
+                    raise KeyError
+                
+            results = count(tweets)
+            detector = list(results.values())[:6]
+            recent = detector[0]
+            avg = sum(detector[1:]) / len(detector) - 1
+            if recent > 3 * avg:
+                link = fetch_top_link(tweets[:recent])
+                text = '「{}」の話題で盛り上がってみます。\n\nチェックしましょう!!\n\n👇現在のトップツイート👇{}'.format(query, link)
+                tweeted = post_tweet(session=session, text=text)
+                print(json.loads(tweeted.text))
+    except KeyError:
+        exit(0)
