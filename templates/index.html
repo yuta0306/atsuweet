@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <title>あつい〜と</title>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <style>
+        * { font-family: "M PLUS Rounded 1c"; }
+    </style>
 </head>
+
 <body ontouchstart="">
     <div class="main">
-        <h1 class="title">あつい〜と</h1>
-        <div class="wrapper">
-            <form action="/verify" method="POST">
-                <p>アカウントを認証する</p>
-                <input type="submit" value="認証する" name="verify">
-            </form> 
-            <div>
-                <p class="msg"></p>
-            </div>
-            <div class="contents">
+        <div class="header">
+            <h1 class="title">あつい〜と</h1>
+        </div>
 
+        <div class="wrapper">
+            <div class="MainContents">
+                <form action="/verify" method="POST">
+                    <h2>アカウントを認証する</h2>
+                    <p>「あつい～と」はユーザーが設定した話題がTwitterで盛り上がったのを、自動でツイートしてくれます。</p>
+                    <p>登録は指定URLからおこない、自分が興味のある話題を設定できます。あなたの推しの名前を登録すれば、もう二度と話題沸騰を逃しません。</p>
+                    <input type="submit" value="認証する" name="verify" class="verify">
+                </form>
             </div>
+        </div>
+
+        <div>
+            <p class="msg"></p>
+        </div>
+        <div class="contents">
+
         </div>
     </div>
 </body>

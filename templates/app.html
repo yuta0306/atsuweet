@@ -9,10 +9,12 @@
 </head>
 <body ontouchstart="">
     <div class="main">
-        <h1 class="title">ダッシュボード</h1>
+        <div class="header">
+            <h1 class="title">あつい～と</h1>
+        </div>
         <div class="wrapper">
-            <input type="text" name="query" id="query">
-            <input type="button" value="クエリを決定" id="action">
+            <input type="text" name="query" id="query" class="query" placeholder="例：橋本環奈">
+            <input type="button" value="ワードを設定" id="action" class="set-word">
             <div>
                 <p class="msg"></p>
             </div>
@@ -20,7 +22,7 @@
 
             </div>
             <div style="margin: 30px 0;">
-                <a href="{{ url_for('index') }}" id="delete">アプリの利用を停止する</a>
+                <a href="{{ url_for('index') }}" id="delete" class="delete">アプリの利用を停止する</a>
             </div>
         </div>
     </div>
