@@ -139,9 +139,9 @@ if __name__ == "__main__":
             detector = list(results.values())[:6]
             recent = detector[0]
             avg = sum(detector[1:]) / len(detector) - 1
-            if recent > 3 * avg:
+            if recent > 5 * avg:
                 link = fetch_top_link(tweets[:recent])
-                text = '「{}」の話題で盛り上がってみます。\n\nチェックしましょう!!\n\n👇現在のトップツイート👇{}'.format(query, link)
+                text = '「{}」の話題で盛り上がってみます。\n\nチェックしましょう!!\n\n#あつい〜と\n\n👇現在のトップツイート👇{}'.format(query, link)
                 tweeted = post_tweet(session=session, text=text)
                 print(json.loads(tweeted.text))
     except KeyError:
